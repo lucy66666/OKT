@@ -7,7 +7,7 @@ use_neptune: true
 save_model: true
 testing: false # only use a very small portion of the dataset for testing purposes
 neptune_project: 'lucy66666/OKT' # change to "username/projectname"
-neptune_api: 'eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiIxYjYzOWQ4YS0wZDM5LTRjYzMtOGU1OC1mZGRhYWMxNWQ1ZDkifQ=='  # change to your own neptune api
+neptune_api: ''  # change to your own neptune api
 log_train_every_itr: 100
 model_save_dir: "checkpoints"
 ##################################################
@@ -16,10 +16,10 @@ model_save_dir: "checkpoints"
 data_path: "data"
 data_for: 'okt' # choose from 'okt' or 'lstm' (student model)
 use_kc: false # if true, this need to be used together with combine_method='linear'
-test_size: 0.2
-max_len: 200
-label_type: 'binary'
-first_ast_convertible: false
+test_size: 0.2 # percentage of test dataset
+max_len: 200 # maximum number of submission per student 
+label_type: 'binary' # score division category, choose from 'binary', 'tenary' or 'raw'
+first_ast_convertible: true # whether to use student first submission to each question
 ##################################################
 # model_lstm_opts
 ##################################################
