@@ -6,3 +6,9 @@ A block diagram of OKT is shown here:
 <p align="center">
 <img src="OKT-code.png" alt="Image" width="400"/>
 </p>
+
+### Dependencies
+
+### Training OKT
+
+
