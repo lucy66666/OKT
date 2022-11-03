@@ -1,0 +1,43 @@
+##################################################
+# exp_opts
+##################################################
+seed: 1
+exp_name: 'student_model'
+use_neptune: false
+save_model: true
+testing: false # only use a very small portion of the dataset for testing purposes
+neptune_project: "lucy66666/student-model" # change to your own "username/projectname"
+neptune_api: "" # change to your own neptune api
+model_save_dir: "checkpoints"
+##################################################
+# data_opts
+##################################################
+data_path: "data"
+data_for: "lstm" # choose from 'okt' or 'lstm' (student model), always 'lstm' in this case
+test_size: 0.2
+use_kc: false # always false in this case
+max_len: 200 # maximum number of submission per student 
+label_type: 'binary' # score division category, choose from 'binary', 'tenary' or 'raw'
+first_ast_convertible: null
+##################################################
+# model_opts
+##################################################
+lstm_inp_dim: 968
+lstm_hid_dim: 768
+pre_trained_lstm_path: null # use if pretrain LSTM model
+use_classifier: true # use if pretrain classifier
+lstm_train: true 
+classifier_hid_dim: 50 
+lstm_init: 'rand'
+##################################################
+# train_opts
+#################################################
+epochs: 100 
+batch_size: 64
+lstm_lr: 0.0001
+cls_lr: 0.0001
+use_scheduler: true # whether to use scheduler during optim
+use_scheduler_lstm: true # whether to init a scheduler for lstm
+use_scheduler_classifier: true
+scheduler_lstm_factor: 0.5
+scheduler_classifier_factor: 0.5

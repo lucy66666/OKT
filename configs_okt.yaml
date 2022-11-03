@@ -6,7 +6,7 @@ exp_name: 'okt'
 use_neptune: true
 save_model: true
 testing: false # only use a very small portion of the dataset for testing purposes
-neptune_project: 'lucy66666/OKT' # change to "username/projectname"
+neptune_project: 'lucy66666/OKT' # change to your own "username/projectname"
 neptune_api: ''  # change to your own neptune api
 log_train_every_itr: 100
 model_save_dir: "checkpoints"
@@ -14,7 +14,7 @@ model_save_dir: "checkpoints"
 # data_opts
 ##################################################
 data_path: "data"
-data_for: 'okt' # choose from 'okt' or 'lstm' (student model)
+data_for: 'okt' # choose from 'okt' or 'lstm' (student model), always 'okt' in this case
 use_kc: false # if true, this need to be used together with combine_method='linear'
 test_size: 0.2 # percentage of test dataset
 max_len: 200 # maximum number of submission per student 
