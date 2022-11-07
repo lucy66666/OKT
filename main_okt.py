@@ -17,8 +17,6 @@ from trainer import *
 from utils import *
 from eval import *
 
-from pdb import set_trace
-
 ## training options
 mydict = yaml.safe_load(open("configs_okt.yaml", "r"))
 configs = Munch(mydict)

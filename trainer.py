@@ -2,8 +2,6 @@ import torch
 import numpy as np
 from sklearn.metrics import jaccard_score
 
-from pdb import set_trace
-
 def lstm_step(batch, lstm, classifier, hidden_dim, 
                     optimizers, loss_fn, train=True,
                     init='rand', use_scheduler=True, schedulers=None, configs=None):

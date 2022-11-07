@@ -5,7 +5,6 @@ import numpy as np
 import yaml
 from munch import Munch
 from sklearn.metrics import accuracy_score, roc_auc_score
-from pdb import set_trace
 
 ## When use AKT, uncomment these lines
 # from AKT.akt import AKT

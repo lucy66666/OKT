@@ -53,20 +53,6 @@ def read_data(configs):
     ## split a student's record into multiples 
     ## if it exceeds configs.max_len, change the subject ID to next one
     prev_subject_id = 0
-    # subjectid_appedix = []
-    # for i in tqdm(range(len(dataset)), desc="splitting students' records ..."):
-    #     if prev_subject_id != dataset.iloc[i].SubjectID:
-    #         # when encountering a new student ID
-    #         prev_subject_id = dataset.iloc[i].SubjectID
-    #         accumulated = 0
-    #         id_appendix = 1
-    #     else:
-    #         accumulated += 1
-    #         if accumulated >= configs.max_len:
-    #             id_appendix += 1
-    #             accumulated = 0
-    #     subjectid_appedix.append(id_appendix)
-
     subjectid_appedix = []
     timesteps = []
     for i in tqdm(range(len(dataset)), desc="splitting students' records ..."):
@@ -83,7 +69,6 @@ def read_data(configs):
         timesteps.append(accumulated)
         subjectid_appedix.append(id_appendix)
     dataset['timestep'] = timesteps
-
     dataset['SubjectID_appendix'] = subjectid_appedix
     dataset['SubjectID'] = [dataset.iloc[i].SubjectID + \
                 '_{}'.format(dataset.iloc[i].SubjectID_appendix) for i in range(len(dataset))]
@@ -116,17 +101,6 @@ def read_data(configs):
         valid_students, test_students = train_test_split(test_students, test_size=0.5, random_state=configs.seed)
         return train_students, valid_students, test_students, dataset
     elif configs.data_for == 'okt':
-        # prev_subject_id = 0
-        # timesteps = []
-        # for i in range(len(dataset)):
-        #     if prev_subject_id != dataset.iloc[i].SubjectID:
-        #         # when encountering a new student ID
-        #         prev_subject_id = dataset.iloc[i].SubjectID
-        #         accumulated = 0
-        #     else:
-        #         accumulated += 1
-        #     timesteps.append(accumulated)
-        # dataset['timestep'] = timesteps
         dataset = dataset.drop(dataset.index[dataset['timestep'] == 0]).reset_index(drop = True)
         # OKT: split on the entries instead of on the students
         trainset, testset = train_test_split(dataset, test_size=configs.test_size, random_state=configs.seed)
