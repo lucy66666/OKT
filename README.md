@@ -32,7 +32,7 @@ In order to train OKT model, run `python main_okt.py` on the command line. All p
 
 ## Pre-trained models
 ### Download pre-trained GPT models
-We provide two fine-tuned GPT-2 models to test the effect of pre-trained response generation model. One with [funcom](https://arxiv.org/pdf/1904.02660v1.pdf) dataset, while the other is further on [CSEDM](https://sites.google.com/ncsu.edu/csedm-dc-2021/) based on the first one. Models can be downloaded with the following commands.
+We provide two fine-tuned GPT-2 models to test the performance of pre-trained response generation model. One with [funcom](https://arxiv.org/pdf/1904.02660v1.pdf) dataset, while the other is further on [CSEDM](https://sites.google.com/ncsu.edu/csedm-dc-2021/) based on the first one. Models can be downloaded with the following commands.
 ```
 cd scripts
 bash pretrained_lm.sh
