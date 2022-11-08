@@ -44,6 +44,8 @@ In order to pre-train knowledge estimation (LSTM) and classifier, run `python ma
 ## Evaluation and Results
 We use two metrics: [CodeBLEU](https://github.com/microsoft/CodeXGLUE/blob/main/Code-Code/code-to-code-trans/CodeBLEU.MD) and [Dist-N](https://aclanthology.org/N16-1014.pdf) and integrate their codes into this repo. To understand more about evalution metrics, please follow their corresponding websites. Training models and generation results will be saved in a directory `checkpoints\$TIME` you just created, where `$TIME` is the current time in `data_time` format. It will contain two models (`lstm` for knowledge tracing and `model` for generative model). It also includes an `eval_log.pkl` file, which shows CodeBLEU score, Dist-1 and generated student answers together with ground-truth answers for comparison. A set of trained results can be downloaded here. 
 ```
+cd scripts
+bash results.sh
 ```
 
 ## Citations
