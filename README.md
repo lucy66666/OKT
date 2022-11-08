@@ -47,6 +47,7 @@ We use two metrics: [CodeBLEU](https://github.com/microsoft/CodeXGLUE/blob/main/
 cd scripts
 bash results.sh
 ```
+Some codes to create the plots included in the paper (visualization of knowledge states in latent space and its trajectory) can be found at directory `notebooks`. 
 
 ## Citations
 Please cite our paper if your find it helpful to you work! 
