@@ -3,10 +3,10 @@
 ##################################################
 seed: 0
 exp_name: 'okt' 
-use_neptune: true
+use_neptune: false
 save_model: true
 testing: false # only use a very small portion of the dataset for testing purposes
-neptune_project: 'lucy66666/OKT' # change to your own "username/projectname"
+neptune_project: '' # change to your own "username/projectname"
 neptune_api: ''  # change to your own neptune api
 log_train_every_itr: 100
 model_save_dir: "checkpoints"
@@ -38,7 +38,7 @@ cls_lr: 0.001
 ##################################################
 # model_gpt_opts
 ##################################################
-okt_model: 'student' # pre-trained GPT model: choose from 'student', 'funcom' or 'gpt-2'
+okt_model: 'funcom' # pre-trained GPT model: choose from 'student', 'funcom' or 'gpt-2'
 train_okt: true 
 pad_token: 'pad' # padding token: choose from 'pad' or 'eos'
 # combine knowledge state with input, choose from add, average, linear, weight, exp_decay, kc_sim_decay, exp_kc_decay, no_decay
