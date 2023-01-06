@@ -118,7 +118,6 @@ def generator_step(batch, lstm_inputs,
         loss_fn = torch.nn.BCEWithLogitsLoss(reduction='mean')
         logits = classifier(torch.cat((ks, next_prompt_embs.cuda()), dim=-1)).squeeze(-1)
         loss_cls = loss_fn(logits[padded_correctness!=-100], padded_correctness[padded_correctness!=-100].cuda()).sum()
-        loss_cls = loss
         loss += loss_cls
     
     if train:
