@@ -1,13 +1,13 @@
 ##################################################
 # exp_opts
 ##################################################
-seed: 0
+seed: 1
 exp_name: 'okt' 
 use_neptune: true
 save_model: true
 testing: false # only use a very small portion of the dataset for testing purposes
 neptune_project: 'lucy66666/OKT' # change to your own "username/projectname"
-neptune_api: ''  # change to your own neptune api
+neptune_api: 'eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiIxYjYzOWQ4YS0wZDM5LTRjYzMtOGU1OC1mZGRhYWMxNWQ1ZDkifQ=='  # change to your own neptune api
 log_train_every_itr: 100
 model_save_dir: "checkpoints"
 ##################################################
@@ -20,17 +20,18 @@ test_size: 0.2 # percentage of test dataset
 max_len: 200 # maximum number of submission per student 
 label_type: 'binary' # score division category, choose from 'binary', 'tenary' or 'raw'
 first_ast_convertible: true # whether to use student first submission to each question
+split_method: "student"
 ##################################################
 # model_lstm_opts
 ##################################################
-kt_model: 'lstm' # default="lstm", other options are 'akt' or 'dkvmn'
+kt_model: 'akt' # default="lstm", other options are 'akt' or 'dkvmn'
 use_lstm: true # if false, this need to be used together with combine_method='exp_decay, kc_sim_decay, exp_kc_decay, no_decay'
 lstm_inp_dim: 968 # Fixed at 968 as it's 768+200 (200 is the prompt embedding)
 lstm_hid_dim: 768 # Fixed at 768 as it's GPT-2 token embedding size
 use_classifier: false # if true, multi-task setting
 classifier_hid_dim: 50 
 lstm_init: 'rand' ## LSTM initialization, choose from 'rand' or 'zero'
-pre_trained_lstm_path: null # use if pretrain LSTM model
+pre_trained_lstm_path:   # use if pretrain LSTM model: model/lstm/student_model
 pre_trained_classifier_path: null # use when use_classifier = true for multi-task setting
 train_lstm: true 
 lstm_lr: 0.00001
@@ -42,7 +43,7 @@ okt_model: 'student' # pre-trained GPT model: choose from 'student', 'funcom' or
 train_okt: true 
 pad_token: 'pad' # padding token: choose from 'pad' or 'eos'
 # combine knowledge state with input, choose from add, average, linear, weight, exp_decay, kc_sim_decay, exp_kc_decay, no_decay
-combine_method: 'add'
+combine_method: 'weight'
 combine_weight: 1 # combine weight of knowledge states
 ##################################################
 # train_generator_opts

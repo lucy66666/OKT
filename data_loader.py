@@ -102,9 +102,19 @@ def read_data(configs):
         return train_students, valid_students, test_students, dataset
     elif configs.data_for == 'okt':
         dataset = dataset.drop(dataset.index[dataset['timestep'] == 0]).reset_index(drop = True)
-        # OKT: split on the entries instead of on the students
-        trainset, testset = train_test_split(dataset, test_size=configs.test_size, random_state=configs.seed)
-        validset, testset = train_test_split(testset, test_size=0.5, random_state=configs.seed)
+        if configs.split_method == "student":
+            # OKT: split on the  students
+            train_students, test_students = train_test_split(students, test_size=configs.test_size, random_state=configs.seed)
+            valid_students, test_students = train_test_split(test_students, test_size=0.5, random_state=configs.seed)
+            trainset = dataset[dataset['SubjectID'].isin(train_students)]
+            validset = dataset[dataset['SubjectID'].isin(valid_students)]
+            testset = dataset[dataset['SubjectID'].isin(test_students)]
+        elif configs.split_method == "entry":
+            # OKT: split on the entries instead of on the students
+            trainset, testset = train_test_split(dataset, test_size=configs.test_size, random_state=configs.seed)
+            validset, testset = train_test_split(testset, test_size=0.5, random_state=configs.seed)
+        else:
+            raise Exception("Invalid split method")
         return trainset, validset, testset, dataset
         
         
