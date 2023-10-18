@@ -102,7 +102,7 @@ def read_data(configs):
         return train_students, valid_students, test_students, dataset
     elif configs.data_for == 'okt':
         dropped_dataset = dataset.copy()
-        dropped_dataset = dropped_dataset.drop(dataset.index[dataset['timestep'] == 0]).reset_index(drop = True)
+        dropped_dataset = dropped_dataset.drop(dropped_dataset.index[dropped_dataset['timestep'] == 0]).reset_index(drop = True)
         # OKT: split on the entries instead of on the students
         trainset, testset = train_test_split(dropped_dataset, test_size=configs.test_size, random_state=configs.seed)
         validset, testset = train_test_split(testset, test_size=0.5, random_state=configs.seed)
