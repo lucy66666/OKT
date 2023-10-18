@@ -26,13 +26,9 @@ cd scripts
 bash data.sh
 ```
 
-## Training OKT
-In order to train OKT model, run `python main_okt.py` on the command line. All parameters can be changed in the `configs_okt.yaml` file. We use [Neptune.ai](https://neptune.ai/) to track our experiment results. If you also want to use Neptune.ai, you should change `neptune_project` and `neptune_api` in the parameter list to your own neptune credentials. \
-**Note**: To use other knowledge tracing (KT) models instead of LSTM as knowledge estimation for OKT, you should use pre-trained KT models. We integrate two KT models (AKT, DKVMN) in our code (need to uncomment first). If you want to use them, please follow [AKT](https://github.com/arghosh/AKT) and [DKVMN](https://github.com/jennyzhang0215/DKVMN) repo to pretrain corresponding KT models. 
-
-## Pre-trained models
-### Download pre-trained GPT models
-We provide two fine-tuned GPT-2 models to test the effect of pre-trained response generation model. One with [funcom](https://arxiv.org/pdf/1904.02660v1.pdf) dataset, while the other is further on [CSEDM](https://sites.google.com/ncsu.edu/csedm-dc-2021/) based on the first one. Models can be downloaded with the following commands.
+## Fine-tuned/Pre-trained models
+### Download fine-tuned GPT models
+We provide two fine-tuned GPT-2 models to test the performance of pre-trained response generation model. One with [funcom](https://arxiv.org/pdf/1904.02660v1.pdf) dataset, while the other is further on [CSEDM](https://sites.google.com/ncsu.edu/csedm-dc-2021/) based on the first one. Models can be downloaded with the following commands.
 ```
 cd scripts
 bash pretrained_lm.sh
@@ -41,12 +37,18 @@ bash pretrained_lm.sh
 ### Training LSTM and classifier
 In order to pre-train knowledge estimation (LSTM) and classifier, run `python main_student_model` on the command line. All parameters can be changed in the `configs_student_model.yaml` file.
 
+## Training OKT
+In order to train OKT model, run `python main_okt.py` on the command line. All parameters can be changed in the `configs_okt.yaml` file. We use [Neptune.ai](https://neptune.ai/) to track our experiment results. If you also want to use Neptune.ai, you should change `neptune_project` and `neptune_api` in the parameter list to your own neptune credentials. \
+**Note**: To use other knowledge tracing (KT) models instead of LSTM as knowledge estimation for OKT, you should use pre-trained KT models. We integrate two KT models (AKT, DKVMN) in our code (need to uncomment first). If you want to use them, please follow [AKT](https://github.com/arghosh/AKT) and [DKVMN](https://github.com/jennyzhang0215/DKVMN) repo to pretrain corresponding KT models. 
+
+
 ## Results and Evaluation
 We use two metrics: [CodeBLEU](https://github.com/microsoft/CodeXGLUE/blob/main/Code-Code/code-to-code-trans/CodeBLEU.MD) and [Dist-N](https://aclanthology.org/N16-1014.pdf) and integrate their codes into this repo. To understand more about evalution metrics, please follow their corresponding websites. Training models and generation results will be saved in a directory `checkpoints\$TIME` you just created, where `$TIME` is the current time in `data_time` format. It will contain two models (`lstm` for knowledge tracing and `model` for generative model). It also includes an `eval_log.pkl` file, which shows CodeBLEU score, Dist-1 and generated student answers together with ground-truth answers for comparison. A set of trained results can be downloaded here. 
 ```
 cd scripts
 bash results.sh
 ```
+Some codes to create the plots included in the paper (visualization of knowledge states in latent space and its trajectory) can be found at directory `notebooks`. 
 
 ## Citations
 Please cite our paper if your find it helpful to you work! 

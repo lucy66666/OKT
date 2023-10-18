@@ -48,7 +48,7 @@ def create_okt_model(configs):
     if configs.okt_model == 'student':
         model = AutoModelWithLMHead.from_pretrained("model/gpt_code_v1_student")
     elif configs.okt_model == 'funcom':
-        model = AutoModelWithLMHead.from_pretrained("/model/gpt_code_v1")
+        model = AutoModelWithLMHead.from_pretrained("model/gpt_code_v1")
     else:
         model = AutoModelWithLMHead.from_pretrained('gpt2')
         
